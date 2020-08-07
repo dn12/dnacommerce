@@ -2,6 +2,7 @@ package net.adiwilaga.minicommerce.data.dataobject
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Product(
     @SerializedName("description")
@@ -16,4 +17,4 @@ data class Product(
     val price: String,
     @SerializedName("title")
     val title: String
-)
+):Serializable

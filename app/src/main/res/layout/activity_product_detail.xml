@@ -1,9 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.activity.ProductDetailActivity">
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp10"
+    tools:context=".ui.activity.MainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <ImageView
+                android:background="@color/white"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/imgava"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"/>
+            <ImageView
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:layout_alignRight="@id/imgava"
+                android:id="@+id/image_share"
+                android:src="@drawable/icon_share_pink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginLeft="@dimen/dp10"
+                android:id="@+id/image_back"
+                android:src="@drawable/icon_arrow_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:layout_alignRight="@id/imgava"
+                android:layout_below="@id/imgava"
+                android:id="@+id/image_like"
+                android:src="@drawable/icon_like_blank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_toLeftOf="@id/image_like"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="@string/app_name"
+                android:textSize="18sp"
+                android:id="@+id/tname"
+                android:layout_below="@id/imgava"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/image_like"
+                />
+            <TextView
+
+
+                android:layout_marginTop="@dimen/dp10"
+                android:text="@string/app_name"
+                android:textSize="16sp"
+                android:id="@+id/tdes"
+                android:layout_below="@id/tname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <Button
+                android:padding="5dp"
+                android:background="@color/colorAccent"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tdes"
+                android:id="@+id/b_buy"
+                android:text="@string/buy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:layout_marginRight="@dimen/dp10"
+                android:layout_toLeftOf="@id/b_buy"
+                android:layout_alignBottom="@+id/b_buy"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="@string/app_name"
+                android:textSize="18sp"
+                android:id="@+id/tprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        </RelativeLayout>
+
+
+
+    </ScrollView>
+</RelativeLayout>

@@ -8,6 +8,7 @@
     tools:context=".ui.activity.MainActivity">
 
     <ImageView
+        android:background="@color/white"
         android:layout_centerHorizontal="true"
         android:id="@+id/imgava"
         android:layout_width="@dimen/dp80"

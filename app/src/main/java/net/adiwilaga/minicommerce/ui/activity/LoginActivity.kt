@@ -1,13 +1,18 @@
 package net.adiwilaga.minicommerce.ui.activity
 
+import android.annotation.TargetApi
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Base64
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
@@ -47,6 +52,8 @@ class LoginActivity : AppCompatActivity() {
         b_login.setOnClickListener {
             gotomain()
         }
+
+
     }
 
     fun setupfblogin(){
@@ -130,4 +137,7 @@ class LoginActivity : AppCompatActivity() {
             Log.e(TAG, "printHashKey()", e)
         }
     }
+
+
+
 }

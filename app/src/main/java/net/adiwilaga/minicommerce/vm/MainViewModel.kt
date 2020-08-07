@@ -1,15 +1,17 @@
 package net.adiwilaga.githubuserfinder.vm
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import net.adiwilaga.githubuserfinder.data.dataobject.BaseResponse
 import net.adiwilaga.githubuserfinder.repo.DataListListener
 import net.adiwilaga.githubuserfinder.repo.DataRepository
+import net.adiwilaga.githubuserfinder.repo.PurchaseRepository
 import net.adiwilaga.minicommerce.data.dataobject.Category
 import net.adiwilaga.minicommerce.data.dataobject.Data
 import net.adiwilaga.minicommerce.data.dataobject.Product
 
-class DataViewModel : ViewModel() {
+class MainViewModel : ViewModel() {
 
     var isloading:MutableLiveData<Boolean> = MutableLiveData(false)
     var errormessage:MutableLiveData<String> = MutableLiveData("")
@@ -17,6 +19,7 @@ class DataViewModel : ViewModel() {
 
     var category:MutableLiveData<List<Category>> = MutableLiveData(ArrayList())
     var products:MutableLiveData<List<Product>> = MutableLiveData(ArrayList())
+    var productspurcashed:MutableLiveData<List<Product>> = MutableLiveData(ArrayList())
 
 
     fun GetData(){
@@ -36,6 +39,11 @@ class DataViewModel : ViewModel() {
         })
 
 
+    }
+
+
+    fun getPurchased(c:Context){
+        productspurcashed.value=PurchaseRepository.GetPurchased(c)
     }
 
 

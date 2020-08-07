@@ -1,7 +1,6 @@
 package net.adiwilaga.minicommerce.ui.activity
 
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -11,9 +10,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
-import net.adiwilaga.githubuserfinder.ui.adapter.CategoryListAdapter
-import net.adiwilaga.githubuserfinder.ui.adapter.ProductListAdapter
-import net.adiwilaga.githubuserfinder.vm.DataViewModel
+import net.adiwilaga.githubuserfinder.vm.MainViewModel
 import net.adiwilaga.minicommerce.R
 import net.adiwilaga.minicommerce.ui.fragment.CartFragment
 import net.adiwilaga.minicommerce.ui.fragment.FeedFragment
@@ -24,31 +21,27 @@ import net.adiwilaga.minicommerce.ui.fragment.ProfileFragment
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
 
-    lateinit var viewModel:DataViewModel
-    lateinit var adp:CategoryListAdapter
-    lateinit var adp1: ProductListAdapter
+    lateinit var viewModel:MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this).get(DataViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         viewModel.GetData()
 
-        adp= CategoryListAdapter(viewModel.category.value!!,this)
-        adp1= ProductListAdapter(viewModel.products.value!!,this)
-        viewModel.products.observe(this, Observer {
-            Log.e(TAG, "data changed".plus(it.size) )
-            adp1.items=it
-            adp1.notifyDataSetChanged()
-        })
-        viewModel.category.observe(this, Observer {
-            adp.items=it
-            adp.notifyDataSetChanged()
-        })
 
 
-        openFragment(HomeFragment.newInstance())
+        if(intent.getBooleanExtra("topurchased",false)) {
+            openFragment(ProfileFragment.newInstance())
+            bottom_navigation.selectedItemId=R.id.navigation_profile
+        }else
+            openFragment(HomeFragment.newInstance())
+
+
+
+
         bottom_navigation.setOnNavigationItemSelectedListener { item: MenuItem ->
             when (item.getItemId()) {
                  R.id. navigation_home -> {
@@ -65,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.navigation_profile->{
-                    openFragment(ProfileFragment.newInstance("", ""))
+                    openFragment(ProfileFragment.newInstance())
                     true
                 }
 

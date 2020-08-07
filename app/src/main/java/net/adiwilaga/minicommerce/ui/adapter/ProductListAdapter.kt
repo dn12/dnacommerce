@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import net.adiwilaga.minicommerce.R
 import net.adiwilaga.minicommerce.data.dataobject.Product
 
-class ProductListAdapter(var items: List<Product>, val context: Context) : RecyclerView.Adapter<ProductViewHolder>() {
+class ProductListAdapter(var items: List<Product>, val context: Context, val lst:ProductListListener) : RecyclerView.Adapter<ProductViewHolder>() {
 
     override fun getItemCount(): Int {
         return items.size
@@ -29,6 +29,9 @@ class ProductListAdapter(var items: List<Product>, val context: Context) : Recyc
         holder.tname?.text=u.title
         Glide.with(context).load(u.imageUrl).into(holder.img)
 
+        holder.img.setOnClickListener {
+            lst.OnItemClicked(u)
+        }
 
         setlove(u.loved,holder.img_like)
 
@@ -58,6 +61,6 @@ class ProductViewHolder (view: View) : RecyclerView.ViewHolder(view) {
 
 }
 
-interface OnBottomReachListener{
-     fun OnBottomReached(pos:Int)
+interface ProductListListener{
+     fun OnItemClicked(prod:Product)
 }
