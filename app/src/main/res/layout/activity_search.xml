@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.HomeFragment">
-
+    tools:context=".ui.activity.SearchActivity">
 
     <RelativeLayout
         android:layout_margin="@dimen/dp10"
@@ -18,13 +18,14 @@
             android:src="@drawable/icon_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <TextView
+        <EditText
+            android:id="@+id/etsearch"
             android:layout_alignBottom="@id/icsearch"
             android:layout_alignTop="@id/icsearch"
             android:padding="@dimen/dp5"
             android:layout_toRightOf="@id/icsearch"
             android:textSize="18sp"
-            android:text="@string/search"
+            android:hint="@string/search"
             android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -32,16 +33,10 @@
 
     </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/rlsearch"
-        android:id="@+id/rv_category"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp120"
-         />
-
-    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_product"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/rv_category"
+        android:layout_below="@+id/rlsearch"
         android:layout_marginTop="0dp" />
+
 </RelativeLayout>

@@ -7,9 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_home.*
 import net.adiwilaga.githubuserfinder.ui.adapter.CategoryListAdapter
 import net.adiwilaga.githubuserfinder.ui.adapter.ProductListAdapter
 import net.adiwilaga.githubuserfinder.ui.adapter.ProductListListener
@@ -18,14 +21,13 @@ import net.adiwilaga.minicommerce.data.dataobject.Category
 import net.adiwilaga.minicommerce.data.dataobject.Product
 import net.adiwilaga.minicommerce.ui.activity.MainActivity
 import net.adiwilaga.minicommerce.ui.activity.ProductDetailActivity
+import net.adiwilaga.minicommerce.ui.activity.SearchActivity
 
 
 class HomeFragment : Fragment() {
     private val TAG = "HomeFragment"
 
 
-    var products:List<Product> = ArrayList()
-    var category:List<Category> = ArrayList()
 
     lateinit var adp:CategoryListAdapter
     lateinit var adp1: ProductListAdapter
@@ -74,7 +76,12 @@ class HomeFragment : Fragment() {
         rv_product.layoutManager=prlm
         rv_product.adapter=adp1
 
-
+        var rlsearch=view.findViewById<RelativeLayout>(R.id.rlsearch)
+        rlsearch.setOnClickListener {
+            var ii= Intent(context,SearchActivity::class.java)
+            ii.putExtra("product", bundleOf(Pair("product",adp1.items)))
+            (activity as MainActivity).startActivity(ii)
+        }
 
         return view
     }
