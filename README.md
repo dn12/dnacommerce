@@ -22,3 +22,7 @@ recyclerview
 testing:
 -junit 4
 -mockito
+
+
+local storage:
+shared preverence
