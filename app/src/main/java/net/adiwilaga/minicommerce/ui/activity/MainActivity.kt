@@ -10,12 +10,12 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
-import net.adiwilaga.githubuserfinder.vm.MainViewModel
+import net.adiwilaga.minicommerce.vm.MainViewModel
 import net.adiwilaga.minicommerce.R
-import net.adiwilaga.minicommerce.ui.fragment.CartFragment
-import net.adiwilaga.minicommerce.ui.fragment.FeedFragment
-import net.adiwilaga.minicommerce.ui.fragment.HomeFragment
-import net.adiwilaga.minicommerce.ui.fragment.ProfileFragment
+import net.adiwilaga.minicommerce.repo.DataRepository
+import net.adiwilaga.minicommerce.repo.PurchaseRepository
+import net.adiwilaga.minicommerce.ui.fragment.*
+import net.adiwilaga.minicommerce.vm.MainViewModelFactory
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this,MainViewModelFactory(DataRepository,PurchaseRepository)).get(MainViewModel::class.java)
 
         viewModel.GetData()
 
@@ -36,9 +36,9 @@ class MainActivity : AppCompatActivity() {
         if(intent.getBooleanExtra("topurchased",false)) {
             openFragment(ProfileFragment.newInstance())
             bottom_navigation.selectedItemId=R.id.navigation_profile
-        }else
+        }else {
             openFragment(HomeFragment.newInstance())
-
+        }
 
 
 
@@ -46,19 +46,23 @@ class MainActivity : AppCompatActivity() {
             when (item.getItemId()) {
                  R.id. navigation_home -> {
                      openFragment(HomeFragment.newInstance())
+                     title="HOME"
                      true
                 }
                 R.id.navigation_feed->{
                     openFragment(FeedFragment.newInstance("", ""))
+                    title="FEED"
                     true
                 }
 
                 R.id.navigation_cart->{
                     openFragment(CartFragment.newInstance("", ""))
+                    title="CART"
                     true
                 }
                 R.id.navigation_profile->{
                     openFragment(ProfileFragment.newInstance())
+                    title="Profile"
                     true
                 }
 
@@ -81,10 +85,11 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-    fun openFragment(fragment: Fragment?) {
+    fun openFragment(fragment: BaseFragment?) {
         val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, fragment!!)
 //        transaction.addToBackStack(null)
         transaction.commit()
+        title=fragment.Title
     }
 }

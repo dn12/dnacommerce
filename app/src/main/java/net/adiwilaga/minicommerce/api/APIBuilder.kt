@@ -1,4 +1,4 @@
-package net.adiwilaga.githubuserfinder.api
+package net.adiwilaga.minicommerce.api
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

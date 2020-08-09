@@ -10,22 +10,23 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import net.adiwilaga.githubuserfinder.ui.adapter.CategoryListAdapter
-import net.adiwilaga.githubuserfinder.ui.adapter.ProductListAdapter
-import net.adiwilaga.githubuserfinder.ui.adapter.ProductListListener
-import net.adiwilaga.githubuserfinder.ui.adapter.ProductMiniListAdapter
+import net.adiwilaga.minicommerce.ui.adapter.CategoryListAdapter
+import net.adiwilaga.minicommerce.ui.adapter.ProductListAdapter
+import net.adiwilaga.minicommerce.ui.adapter.ProductListListener
+import net.adiwilaga.minicommerce.ui.adapter.ProductMiniListAdapter
 import net.adiwilaga.minicommerce.R
 import net.adiwilaga.minicommerce.data.dataobject.Product
 import net.adiwilaga.minicommerce.ui.activity.MainActivity
 import net.adiwilaga.minicommerce.ui.activity.ProductDetailActivity
 
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : BaseFragment() {
+
 
     lateinit var adp: ProductMiniListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        Title="PROFILE"
     }
 
     override fun onCreateView(

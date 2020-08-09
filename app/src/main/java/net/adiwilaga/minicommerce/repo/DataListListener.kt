@@ -1,6 +1,6 @@
-package net.adiwilaga.githubuserfinder.repo
+package net.adiwilaga.minicommerce.repo
 
-import net.adiwilaga.githubuserfinder.data.dataobject.BaseResponse
+import net.adiwilaga.minicommerce.data.dataobject.BaseResponse
 import net.adiwilaga.minicommerce.data.dataobject.Data
 
 interface DataListListener {

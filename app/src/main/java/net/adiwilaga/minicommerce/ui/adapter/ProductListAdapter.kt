@@ -1,4 +1,4 @@
-package net.adiwilaga.githubuserfinder.ui.adapter
+package net.adiwilaga.minicommerce.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

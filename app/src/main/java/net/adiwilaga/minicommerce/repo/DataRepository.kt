@@ -1,11 +1,11 @@
-package net.adiwilaga.githubuserfinder.repo
+package net.adiwilaga.minicommerce.repo
 
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
-import net.adiwilaga.githubuserfinder.api.APIBuilder
+import net.adiwilaga.minicommerce.api.APIBuilder
 import retrofit2.HttpException
 import java.io.IOException
 import java.nio.charset.Charset

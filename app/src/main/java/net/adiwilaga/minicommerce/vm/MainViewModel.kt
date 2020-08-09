@@ -1,17 +1,17 @@
-package net.adiwilaga.githubuserfinder.vm
+package net.adiwilaga.minicommerce.vm
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import net.adiwilaga.githubuserfinder.data.dataobject.BaseResponse
-import net.adiwilaga.githubuserfinder.repo.DataListListener
-import net.adiwilaga.githubuserfinder.repo.DataRepository
-import net.adiwilaga.githubuserfinder.repo.PurchaseRepository
+import net.adiwilaga.minicommerce.data.dataobject.BaseResponse
+import net.adiwilaga.minicommerce.repo.DataListListener
+import net.adiwilaga.minicommerce.repo.DataRepository
+import net.adiwilaga.minicommerce.repo.PurchaseRepository
 import net.adiwilaga.minicommerce.data.dataobject.Category
 import net.adiwilaga.minicommerce.data.dataobject.Data
 import net.adiwilaga.minicommerce.data.dataobject.Product
 
-class MainViewModel : ViewModel() {
+class MainViewModel(val repo:DataRepository,val purchaserepo:PurchaseRepository) : ViewModel() {
 
     var isloading:MutableLiveData<Boolean> = MutableLiveData(false)
     var errormessage:MutableLiveData<String> = MutableLiveData("")
@@ -24,7 +24,7 @@ class MainViewModel : ViewModel() {
 
     fun GetData(){
         isloading.value=true
-        DataRepository.GetData(object : DataListListener {
+        repo.GetData(object : DataListListener {
             override fun onSuccess(data: BaseResponse) {
                 isloading.value=false
                 category.value=data.data.category
@@ -43,7 +43,7 @@ class MainViewModel : ViewModel() {
 
 
     fun getPurchased(c:Context){
-        productspurcashed.value=PurchaseRepository.GetPurchased(c)
+        productspurcashed.value=purchaserepo.GetPurchased(c)
     }
 
 

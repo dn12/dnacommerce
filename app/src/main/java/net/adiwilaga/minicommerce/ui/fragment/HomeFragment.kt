@@ -13,9 +13,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_home.*
-import net.adiwilaga.githubuserfinder.ui.adapter.CategoryListAdapter
-import net.adiwilaga.githubuserfinder.ui.adapter.ProductListAdapter
-import net.adiwilaga.githubuserfinder.ui.adapter.ProductListListener
+import net.adiwilaga.minicommerce.ui.adapter.CategoryListAdapter
+import net.adiwilaga.minicommerce.ui.adapter.ProductListAdapter
+import net.adiwilaga.minicommerce.ui.adapter.ProductListListener
 import net.adiwilaga.minicommerce.R
 import net.adiwilaga.minicommerce.data.dataobject.Category
 import net.adiwilaga.minicommerce.data.dataobject.Product
@@ -24,7 +24,7 @@ import net.adiwilaga.minicommerce.ui.activity.ProductDetailActivity
 import net.adiwilaga.minicommerce.ui.activity.SearchActivity
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
     private val TAG = "HomeFragment"
 
 
@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
     lateinit var adp1: ProductListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        Title="HOME"
 
     }
 

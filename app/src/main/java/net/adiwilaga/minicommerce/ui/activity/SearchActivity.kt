@@ -11,11 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_search.*
-import net.adiwilaga.githubuserfinder.ui.adapter.ProductListAdapter
-import net.adiwilaga.githubuserfinder.ui.adapter.ProductListListener
-import net.adiwilaga.githubuserfinder.ui.adapter.ProductMiniListAdapter
-import net.adiwilaga.githubuserfinder.vm.MainViewModel
-import net.adiwilaga.githubuserfinder.vm.SearchViewModel
+import net.adiwilaga.minicommerce.ui.adapter.ProductListAdapter
+import net.adiwilaga.minicommerce.ui.adapter.ProductListListener
+import net.adiwilaga.minicommerce.ui.adapter.ProductMiniListAdapter
+import net.adiwilaga.minicommerce.vm.MainViewModel
+import net.adiwilaga.minicommerce.vm.SearchViewModel
 import net.adiwilaga.minicommerce.R
 import net.adiwilaga.minicommerce.data.dataobject.Product
 

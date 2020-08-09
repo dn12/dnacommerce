@@ -1,4 +1,4 @@
-package net.adiwilaga.githubuserfinder.repo
+package net.adiwilaga.minicommerce.repo
 
 import android.content.Context
 import android.preference.PreferenceManager
@@ -8,7 +8,7 @@ import com.google.gson.JsonObject
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
-import net.adiwilaga.githubuserfinder.api.APIBuilder
+import net.adiwilaga.minicommerce.api.APIBuilder
 import net.adiwilaga.minicommerce.data.dataobject.Category
 import net.adiwilaga.minicommerce.data.dataobject.Data
 import net.adiwilaga.minicommerce.data.dataobject.Product

@@ -1,4 +1,4 @@
-package net.adiwilaga.githubuserfinder.data.dataobject
+package net.adiwilaga.minicommerce.data.dataobject
 
 
 import com.google.gson.annotations.SerializedName

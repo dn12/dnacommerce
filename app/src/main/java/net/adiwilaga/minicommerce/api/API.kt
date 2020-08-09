@@ -1,7 +1,7 @@
-package net.adiwilaga.githubuserfinder.api
+package net.adiwilaga.minicommerce.api
 
 
-import net.adiwilaga.githubuserfinder.data.dataobject.BaseResponse
+import net.adiwilaga.minicommerce.data.dataobject.BaseResponse
 import net.adiwilaga.minicommerce.data.dataobject.Data
 import retrofit2.http.GET
 import retrofit2.http.Query

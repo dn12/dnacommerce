@@ -9,9 +9,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_product_detail.*
-import net.adiwilaga.githubuserfinder.vm.ProductDetailViewModel
+import net.adiwilaga.minicommerce.vm.ProductDetailViewModel
 import net.adiwilaga.minicommerce.R
 import net.adiwilaga.minicommerce.data.dataobject.Product
+import net.adiwilaga.minicommerce.repo.DataRepository
+import net.adiwilaga.minicommerce.repo.PurchaseRepository
+import net.adiwilaga.minicommerce.vm.MainViewModel
+import net.adiwilaga.minicommerce.vm.MainViewModelFactory
+import net.adiwilaga.minicommerce.vm.ProductDetailViewModelFactory
 
 class ProductDetailActivity : AppCompatActivity() {
 
@@ -21,7 +26,9 @@ class ProductDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
 
-        viewModel = ViewModelProvider(this).get(ProductDetailViewModel::class.java)
+        viewModel = ViewModelProvider(this,
+            ProductDetailViewModelFactory(PurchaseRepository)
+        ).get(ProductDetailViewModel::class.java)
 
         mproduct=intent.getSerializableExtra("product") as Product
 
