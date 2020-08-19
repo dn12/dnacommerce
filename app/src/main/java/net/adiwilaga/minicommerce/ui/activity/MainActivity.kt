@@ -5,29 +5,24 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
 import net.adiwilaga.minicommerce.vm.MainViewModel
 import net.adiwilaga.minicommerce.R
-import net.adiwilaga.minicommerce.repo.DataRepository
-import net.adiwilaga.minicommerce.repo.PurchaseRepository
 import net.adiwilaga.minicommerce.ui.fragment.*
-import net.adiwilaga.minicommerce.vm.MainViewModelFactory
+import org.koin.android.ext.android.inject
 
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
 
-    lateinit var viewModel:MainViewModel
+     val viewModel by inject<MainViewModel> ()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this,MainViewModelFactory(DataRepository,PurchaseRepository)).get(MainViewModel::class.java)
 
         viewModel.GetData()
 

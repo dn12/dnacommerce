@@ -18,19 +18,19 @@ import net.adiwilaga.minicommerce.vm.MainViewModel
 import net.adiwilaga.minicommerce.vm.SearchViewModel
 import net.adiwilaga.minicommerce.R
 import net.adiwilaga.minicommerce.data.dataobject.Product
+import org.koin.android.ext.android.inject
 
 class SearchActivity : AppCompatActivity() {
     private  val TAG = "SearchActivity"
 
 
-    lateinit var viewModel:SearchViewModel
+    val viewModel by inject<SearchViewModel>()
     lateinit var adp: ProductMiniListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
         var bundle=intent.getBundleExtra("product")
         var lsproduct= bundle.get("product") as List<Product>
 

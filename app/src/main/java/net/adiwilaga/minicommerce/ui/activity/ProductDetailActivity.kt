@@ -6,29 +6,22 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_product_detail.*
-import net.adiwilaga.minicommerce.vm.ProductDetailViewModel
 import net.adiwilaga.minicommerce.R
 import net.adiwilaga.minicommerce.data.dataobject.Product
-import net.adiwilaga.minicommerce.repo.DataRepository
-import net.adiwilaga.minicommerce.repo.PurchaseRepository
-import net.adiwilaga.minicommerce.vm.MainViewModel
-import net.adiwilaga.minicommerce.vm.MainViewModelFactory
-import net.adiwilaga.minicommerce.vm.ProductDetailViewModelFactory
+import net.adiwilaga.minicommerce.vm.ProductDetailViewModel
+import org.koin.android.ext.android.inject
 
 class ProductDetailActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: ProductDetailViewModel
+    private  val viewModel by inject<ProductDetailViewModel>()
     lateinit var mproduct:Product
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)
 
-        viewModel = ViewModelProvider(this,
-            ProductDetailViewModelFactory(PurchaseRepository)
-        ).get(ProductDetailViewModel::class.java)
+
 
         mproduct=intent.getSerializableExtra("product") as Product
 
